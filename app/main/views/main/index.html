@@ -3,4 +3,20 @@
 
 <:Body>
   <h1>Home</h1>
+  {{ if Volt.user }}
+  <div class="row">
+    <div class="col-md-4">
+      {{ _users.each do |user| }}
+        {{ if user._id != Volt.user._id }}
+          <div class="contact {{ if params._user_id == user._id }} active {{ end }}" e-click="select_conversation(user)">
+            {{user._name}}
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+  {{ else }}
+  <p>This is a sample application built with Volt to demonstrate its real-time capabilities. Please log in to access it.</p>
+  {{ end }}
+
 
